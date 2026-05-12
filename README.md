@@ -1,3 +1,3 @@
-javac -d out src/main/lexer/TokenType.java src/main/lexer/Token.java src/main/lexer/Lexer.java src/main/Main.java
+javac -d out/ (Get-ChildItem -Recurse -Filter "*.java" src\main\java | % { $_.FullName })
 
-java -cp out Main src/test/caso1.txt
+java -cp out main.Main
