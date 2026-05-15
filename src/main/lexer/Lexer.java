@@ -67,7 +67,7 @@ public class Lexer {
         StringBuilder acumulation = new StringBuilder();  // usar StringBuilder
         int startLine = line;
 
-        while (Character.isLetterOrDigit(peek()) || peek() == '_') {
+        while (Character.isLowerCase(peek()) || Character.isDigit(peek()) || peek() == '_') {
             acumulation.append(advance());  // acumula Y avanza en una línea
         }
 

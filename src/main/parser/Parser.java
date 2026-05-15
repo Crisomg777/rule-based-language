@@ -42,15 +42,16 @@ public class Parser {
     }
 
     public RuleNode parseRule() {
-        consume(TokenType.RULE);                            // consume "rule"
-        Token name = consume(TokenType.ID);                 // guarda "r1"
-        consume(TokenType.IF);                              // consume "if"
-        ConditionNode condition = parseCondition();         // construye condición
-        consume(TokenType.THEN);                            // consume "then"
-        ActionNode action = parseAction();                  // construye acción
+        consume(TokenType.RULE);
+        Token name = consume(TokenType.ID);
+        consume(TokenType.COLON);
+        consume(TokenType.IF);
+        ConditionNode condition = parseCondition();
+        consume(TokenType.THEN);
+        ActionNode action = parseAction();
         return new RuleNode(name.getValue(), condition, action);
     }
-
+    
     public ConditionNode parseCondition() {
     ConditionNode left = new ConditionNode(parseAtom()); // ya envuelto    
         if (peek().getType() == TokenType.AND) {

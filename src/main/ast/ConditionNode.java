@@ -17,6 +17,38 @@ public class ConditionNode {
         this.right = right;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        ConditionNode other = (ConditionNode) obj;
+
+        if (this.isAnd() != other.isAnd()) {
+            return false;
+        }
+
+        if (this.isAnd()) {
+            return this.getLeft().equals(other.getLeft()) &&
+            this.getRight().equals(other.getRight());
+        }
+
+        if (this.getAtom() == null && other.getAtom() == null) {
+            return true;
+        }
+
+        if (this.getAtom() == null || other.getAtom() == null) {
+            return false;
+        }
+
+        return this.getAtom().equals(other.getAtom());
+    }
+
     public boolean isAnd() { return isAnd; }
     public ConditionNode getLeft() { return left; }
     public ConditionNode getRight() { return right; }
